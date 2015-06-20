@@ -4,6 +4,19 @@
   app.service('CustomerService', function($q, $http, $stateParams, $state){
 
   this.addCustomer = function(customer, location){
+    var d = new Date();
+    var n = d.getDay(); 
+
+    console.log("DAY OF THE WEEK", n); 
+    // var weekday = new Array(7);
+    //   weekday[0]=  "Sunday";
+    //   weekday[1] = "Monday";
+    //   weekday[2] = "Tuesday";
+    //   weekday[3] = "Wednesday";
+    //   weekday[4] = "Thursday";
+    //   weekday[5] = "Friday";
+    //   weekday[6] = "Saturday";
+
     var dfd = $q.defer();
         $http({
           method: 'POST',
@@ -18,7 +31,7 @@
         })
         .then(function(res){
           console.log(res);
-          dfd.resolve(res); 
+          dfd.resolve(res);
         });
       return dfd.promise;
     },
